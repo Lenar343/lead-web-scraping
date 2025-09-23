@@ -11,73 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('dropdowntitles').addEventListener('change', async function () {
-    const selectedOption = this.options[this.selectedIndex];
-    const selectedId = selectedOption.value;
-    window.currentRecordId = selectedId;
-
-    if (!selectedId) return;
-
-    try {
-      const response = await fetch('https://ledefnot543.app.n8n.cloud/webhook/get-latest-prompt', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: selectedId })
-      });
-
-      if (response.status === 298) {
-        const result = await response.json();
-
-        // ✅ Always show the full original input
-        const fullInput = selectedOption.title || result.Input;
-
-        document.getElementById('textResult').value = result.Content || 'No content';
-        if (!document.getElementById('lock-textInput').checked) {
-          document.getElementById('textInput').value = fullInput || 'No content';
-        }
-        if (!document.getElementById('lock-promptInput').checked) {
-          document.getElementById('promptInput').value = result.MainPrompt || 'No content';
-        }
-        if (!document.getElementById('lock-secondpromptInput').checked) {
-          document.getElementById('secondpromptInput').value = result.SecondaryPrompt || 'No content';
-        }
-        console.log("Loaded:", result);
-        document.getElementById('dropdowntitles').value = '__placeholder__';
-      }
-
-    } catch (error) {
-      console.error('Error fetching single title:', error);
-      document.getElementById('textResult').value = 'Error retrieving post.';
-    }
-  });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('dropdown').addEventListener('change', async function () {
-    const selectedOption = this.options[this.selectedIndex].value;
-    const isGerman = document.getElementById('germanToggle').checked;
-
-    window.currentRecordId = '';
-    document.getElementById('dropdowntitles').value = '__placeholder__';
-    if (!document.getElementById('lock-promptInput').checked) {
-      document.getElementById('promptInput').value = '';
-    }
-    const lang = isGerman ? 'de' : 'en';
-
-    if (selectedOption === 'Business' && !document.getElementById('lock-promptInput').checked) {
-      document.getElementById('promptInput').value = promptBusiness[lang];
-    } else if (selectedOption === 'Narrative' && !document.getElementById('lock-promptInput').checked) {
-      document.getElementById('promptInput').value = promptNarrative[lang];
-    } else if (selectedOption === 'Business10' && !document.getElementById('lock-promptInput').checked) {
-      document.getElementById('promptInput').value = promptBusiness10[lang];
-    } else if (selectedOption === 'Wehelpyou' && !document.getElementById('lock-promptInput').checked) {
-      document.getElementById('promptInput').value = promptWehelpyou[lang];
-    }
-  });
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('custom-prompt').addEventListener('change', function () {
     const dropdown = document.getElementById('dropdown');
     
@@ -109,7 +42,7 @@ async function postText() {
   }; 
   
   try {
-    const response = await fetch('https://ledefnot543.app.n8n.cloud/webhook/generate-from-text', {
+    const response = await fetch('https://lenyesbutalsono345.app.n8n.cloud/webhook/submit-link', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ formData })
@@ -150,3 +83,4 @@ document.addEventListener('DOMContentLoaded', () => {
   { "url": "https://lenyes346.app.n8n.cloud/workflow/20jTer0mQUOZCvsn", "alt": "..." },
   { "url": "http://localhost:81", "alt": "..." }
 ]
+
