@@ -739,14 +739,26 @@
   
   <div class="container">
 
-    <label class="toggle-item"><input type="checkbox" id="germanToggle">Language: German</label>
+    <!-- <label class="toggle-item"><input type="checkbox" id="germanToggle">Language: German</label> -->
     
     <div class="section-header">
       <div class="title-container">
         <span class="dot"></span>
-        <span class="section-title">Main leads</span>
+        <span class="section-title">Submit a lead</span>
       </div>
-      <div class="section-desc">sorted by recent</div>
+      <div class="section-desc">add the link or name of the company you wish the AI to scrape for information</div>
+    </div>
+
+    <div class="textInput-wrapper">
+ 
+    <textarea id="linkInput" placeholder="Enter or paste your company link here..."></textarea>
+
+    <textarea id="nameInput" placeholder="Enter or paste your company name here..."></textarea>
+
+    </div>
+
+    <div class="generate-ai-main">
+      <button onclick="postText()" id="postTextBtn" class="btn-success">🔄 SUBMIT FOR SCRAPING      </button>
     </div>
     
     <div class="section-header">
