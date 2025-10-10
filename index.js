@@ -42,7 +42,7 @@ async function postText() {
   }; 
   
   try {
-    const response = await fetch('https://lenyesbutalsono345.app.n8n.cloud/webhook/submit-link', {
+    const response = await fetch('https://n8n.enhanced-tech.de/webhook/submit-link', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ formData })
@@ -83,4 +83,5 @@ document.addEventListener('DOMContentLoaded', () => {
   { "url": "https://lenyes346.app.n8n.cloud/workflow/20jTer0mQUOZCvsn", "alt": "..." },
   { "url": "http://localhost:81", "alt": "..." }
 ]
+
 
