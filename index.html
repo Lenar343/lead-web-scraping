@@ -733,7 +733,7 @@
       <img src="logo.svg" alt="Logo" class="site-logo">
       <span class="site-title">SmartFlux AI</span>
     </div>
-    <div class="site-version">AI Leads Assistant v0.1</div>
+    <div class="site-version">AI Lead Hunter v0.3</div>
   </header>
   
   
@@ -744,115 +744,19 @@
     <div class="section-header">
       <div class="title-container">
         <span class="dot"></span>
-        <span class="section-title">Submit a lead</span>
+        <span class="section-title">Submit Link/s</span>
       </div>
-      <div class="section-desc">add the link or name of the company you wish the AI to scrape for information</div>
+      <div class="section-desc">add the link of the company you wish the AI to scrape for information</div>
     </div>
 
     <div class="textInput-wrapper">
  
     <textarea id="linkInput" placeholder="Enter or paste your company link here..."></textarea>
 
-    <textarea id="nameInput" placeholder="Enter or paste your company name here..."></textarea>
-
     </div>
 
     <div class="generate-ai-main">
-      <button onclick="postText()" id="postTextBtn" class="btn-success">🔄 SUBMIT FOR SCRAPING      </button>
+      <button onclick="postText()" id="postTextBtn" class="btn-success">🔄 POST LINK      </button>
     </div>
-    
-    <div class="section-header">
-      <div class="title-container">
-        <span class="dot"></span>
-        <span class="section-title">Other Leads</span>
-      </div>
-      <div class="section-desc">Sorted by priority</div>
-    </div>
-    
-    <div class="section-header">
-      <div class="title-container">
-        <span class="dot"></span>
-        <span class="section-title">Inactive</span>
-      </div>
 </body>
 </html>
-
-<script>
-
-    function loadDropdownOptions() {
-      const options = [
-        { value: 'Narrative', label: 'Narrative Prompt' },
-        { value: 'Business', label: 'Business Prompt' },
-        { value: 'Business10', label: 'Business Top 10' },
-        { value: 'Wehelpyou', label: 'We Help You Grow' }
-      ];
-
-      const dropdown = document.getElementById('dropdown');
-      dropdown.innerHTML = '<option value="">Select an option...</option>';
-
-      options.forEach(option => {
-        const optionElement = document.createElement('option');
-        optionElement.value = option.value;
-        optionElement.textContent = option.label;
-        dropdown.appendChild(optionElement);
-      });
-    }
-
-    function toggleSettingsPopup() {
-      const popup = document.getElementById('settingsPopup');
-      popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
-    }
-
-    function togglePrompt() {
-      const prompt = document.getElementById('promptInput');
-      const show = document.getElementById('showPrompt').checked;
-      prompt.style.display = show ? 'block' : 'none';
-    }
-
-
-    async function submitTextWithDropdown() {
-      const textInput = document.getElementById('textInput').value;
-      const selectedDropdown = document.getElementById('dropdown').value;
-
-      const formData = {
-        text: textInput,
-        dropdown: selectedDropdown,
-        emojis: document.getElementById('emojis').checked.toString(),
-        cta: document.getElementById('cta').checked.toString(),
-        facts: document.getElementById('facts').checked.toString(),
-        longPost: document.getElementById('longPost').checked.toString(),
-        hotTakes: document.getElementById('hotTakes').checked.toString(),
-        german: document.getElementById('germanToggle').checked.toString()
-      };
-
-      if (!textInput || !selectedDropdown) {
-        alert('Please fill in both text and select an option');
-        return;
-      }
-
-      try {
-        const response = await fetch('/api/submit-form', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to submit form');
-        }
-
-        const result = await response.json();
-        document.getElementById('textResult').value =
-          `Success! Response: ${JSON.stringify(result, null, 2)}`;
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        document.getElementById('textResult').value =
-          `Error: ${error.message}`;
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', loadDropdownOptions);
-
-</script>
