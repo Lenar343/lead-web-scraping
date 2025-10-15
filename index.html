@@ -202,6 +202,8 @@
   </header>
   
   <div class="container">
+
+    <label class="toggle-item"><input type="checkbox" id="multiplelinks">Multiple Links (comma separated)</label>
     
     <div class="section-header">
       <div class="title-container">
@@ -260,6 +262,7 @@
 
       const formData = {
         links: links,
+        multiplelinks: document.getElementById('multiplelinks').checked.toString()
       }; 
       
       try {
