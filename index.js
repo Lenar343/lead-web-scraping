@@ -25,8 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function postText() {
-  const link = document.getElementById('linkInput').value;
-  const name = document.getElementById('nameInput').value;
+  const links = document.getElementById('linksInput').value;
  
   const button = document.getElementById('postTextBtn');
   button.classList.add('loading');
@@ -37,8 +36,7 @@ async function postText() {
   }, 45000);
 
   const formData = {
-    link: link,
-    name: name,
+    links: links,
   }; 
   
   try {
